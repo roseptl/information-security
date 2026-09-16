@@ -1,0 +1,59 @@
+Last login: Wed Sep 16 22:05:08 on ttys000
+leedaria@Lees-MacBook-Air ~ % sudo mkdir -p /usr/local/bin
+Password:
+leedaria@Lees-MacBook-Air ~ % sudo nano /usr/local/bin/system_info
+leedaria@Lees-MacBook-Air ~ % sudo chmod +x /usr/local/bin/system_info
+leedaria@Lees-MacBook-Air ~ % system_info
+Hostname: Lees-MacBook-Air.local
+Current User: leedaria
+Disk Space: Filesystem       Size   Used  Avail Capacity iused     ifree %iused  Mounted on
+/dev/disk3s1s1  228Gi  8.5Gi   43Gi    17%  356048 454927960    0%   /
+devfs           199Ki  199Ki    0Bi   100%     690         0  100%   /dev
+/dev/disk3s6    228Gi  2.0Gi   43Gi     5%       2 454927960    0%   /System/Volumes/VM
+/dev/disk3s2    228Gi  4.8Gi   43Gi    10%     410 454927960    0%   /System/Volumes/Preboot
+/dev/disk3s4    228Gi  3.9Mi   43Gi     1%      86 454927960    0%   /System/Volumes/Update
+/dev/disk1s2    500Mi  6.0Mi  482Mi     2%       1   4940280    0%   /System/Volumes/xarts
+/dev/disk1s1    500Mi  6.2Mi  482Mi     2%      41   4940280    0%   /System/Volumes/iSCPreboot
+/dev/disk1s3    500Mi  560Ki  482Mi     1%      62   4940280    0%   /System/Volumes/Hardware
+/dev/disk3s5    228Gi  168Gi   43Gi    80% 1000671 454927960    0%   /System/Volumes/Data
+map auto_home     0Bi    0Bi    0Bi   100%       0         0  100%   /System/Volumes/Data/home
+/dev/disk2s1    5.0Gi  1.9Gi  3.1Gi    39%      60  32157240    0%   /System/Volumes/Update/SFR/mnt1
+/dev/disk3s1    228Gi  8.5Gi   43Gi    17%  356050 454927960    0%   /System/Volumes/Update/mnt1
+leedaria@Lees-MacBook-Air ~ % cd ~
+mkdir lab2_scripts
+cd lab2_scripts
+leedaria@Lees-MacBook-Air lab2_scripts % nano greet.sh
+leedaria@Lees-MacBook-Air lab2_scripts % chmod +x greet.sh
+./greet.sh
+Hello, leedaria!
+leedaria@Lees-MacBook-Air lab2_scripts % nano current_time.sh
+leedaria@Lees-MacBook-Air lab2_scripts % chmod +x current_time.sh
+./current_time.sh
+./current_time.sh: line 10: входной: command not found
+Current time: 23:19. Work day has already ended.
+leedaria@Lees-MacBook-Air lab2_scripts % echo "apple banana apple orange apple" > test.txt
+leedaria@Lees-MacBook-Air lab2_scripts % nano count_word.sh
+leedaria@Lees-MacBook-Air lab2_scripts % chmod +x count_word.sh
+./count_word.sh test.txt apple
+The word 'apple' appears 3 times in test.txt
+leedaria@Lees-MacBook-Air lab2_scripts % mkdir test_dir
+touch test_dir/empty1.txt test_dir/empty2.txt
+echo "not empty" > test_dir/full.txt
+leedaria@Lees-MacBook-Air lab2_scripts % nano delete_empty_files.sh
+leedaria@Lees-MacBook-Air lab2_scripts % chmod +x delete_empty_files.sh
+./delete_empty_files.sh test_dir
+Deleting: test_dir/empty2.txt
+Deleting: test_dir/empty1.txt
+leedaria@Lees-MacBook-Air lab2_scripts % ls test_dir
+full.txt
+leedaria@Lees-MacBook-Air lab2_scripts % ls -la ~/lab2_scripts
+total 40
+drwxr-xr-x   8 leedaria  staff   256 Sep 16 23:21 .
+drwxr-x---+ 68 leedaria  staff  2176 Sep 16 23:17 ..
+-rwxr-xr-x   1 leedaria  staff   317 Sep 16 23:20 count_word.sh
+-rwxr-xr-x   1 leedaria  staff   677 Sep 16 23:19 current_time.sh
+-rwxr-xr-x   1 leedaria  staff   301 Sep 16 23:21 delete_empty_files.sh
+-rwxr-xr-x   1 leedaria  staff    38 Sep 16 23:18 greet.sh
+-rw-r--r--   1 leedaria  staff    32 Sep 16 23:19 test.txt
+drwxr-xr-x   3 leedaria  staff    96 Sep 16 23:21 test_dir
+leedaria@Lees-MacBook-Air lab2_scripts %
