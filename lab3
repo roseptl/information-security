@@ -1,0 +1,103 @@
+Last login: Thu Sep 17 12:23:47 on console
+leedaria@Lees-MacBook-Air ~ % cd ~
+mkdir lab3_toy_shell
+cd lab3_toy_shell
+nano toy_shell.py
+leedaria@Lees-MacBook-Air lab3_toy_shell % cd ~
+mkdir lab3_toy_shell
+cd lab3_toy_shell
+nano toy_shell.py
+mkdir: lab3_toy_shell: File exists
+leedaria@Lees-MacBook-Air lab3_toy_shell % python3 toy_shell.py
+  File "/Users/leedaria/lab3_toy_shell/toy_shell.py", line 28
+    print("Toy Shell: List files and folders older than a given date
+          ^
+SyntaxError: unterminated string literal (detected at line 28)
+leedaria@Lees-MacBook-Air lab3_toy_shell % >....
+                creation_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(item_ctime))
+                print(f"{item} ({item_type}, Created: {creation_time})")
+    except ValueError:
+        print("Invalid date format. Please use YYYY-MM-DD.")
+
+def toy_shell():
+    print("Toy Shell: List files and folders older than a given date (based on creation time)")
+    print("Enter a date in the format YYYY-MM-DD or type 'exit' to quit.")
+    while True:
+        try:
+            command = input("toy-shell> ").strip()
+            if command.lower() == "exit":
+                print("Exiting toy shell.")
+                break
+            list_items_older_than(command)
+        except KeyboardInterrupt:
+            print("\nUse 'exit' to quit the shell.")
+
+if __name__ == "__main__":
+    toy_shell()
+PYEOF
+leedaria@Lees-MacBook-Air lab3_toy_shell % cat -n toy_shell.py
+     1	#!/usr/bin/env python3
+     2
+     3	import os
+     4	import time
+     5	from datetime import datetime
+     6
+     7	def list_items_older_than(date_input):
+     8	    try:
+     9	        target_date = datetime.strptime(date_input, "%Y-%m-%d").timestamp()
+    10
+    11	        items = os.listdir('.')
+    12	        for item in items:
+    13	            item_ctime = os.path.getctime(item)
+    14	            if item_ctime < target_date:
+    15	                item_type = "Folder" if os.path.isdir(item) else "File"
+    16	                creation_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(item_ctime))
+    17	                print(f"{item} ({item_type}, Created: {creation_time})")
+    18	    except ValueError:
+    19	        print("Invalid date format. Please use YYYY-MM-DD.")
+    20
+    21	def toy_shell():
+    22	    print("Toy Shell: List files and folders older than a given date (based on creation time)")
+    23	    print("Enter a date in the format YYYY-MM-DD or type 'exit' to quit.")
+    24	    while True:
+    25	        try:
+    26	            command = input("toy-shell> ").strip()
+    27	            if command.lower() == "exit":
+    28	                print("Exiting toy shell.")
+    29	                break
+    30	            list_items_older_than(command)
+    31	        except KeyboardInterrupt:
+    32	            print("\nUse 'exit' to quit the shell.")
+    33
+    34	if __name__ == "__main__":
+    35	    toy_shell()
+leedaria@Lees-MacBook-Air lab3_toy_shell % python3 toy_shell.py
+Toy Shell: List files and folders older than a given date (based on creation time)
+Enter a date in the format YYYY-MM-DD or type 'exit' to quit.
+toy-shell> 2024-01-01
+toy-shell> 2026-12-31
+toy_shell.py (File, Created: 2026-09-17 12:59:05)
+toy-shell> учше
+Invalid date format. Please use YYYY-MM-DD.
+toy-shell>
+Invalid date format. Please use YYYY-MM-DD.
+toy-shell> exir
+Invalid date format. Please use YYYY-MM-DD.
+toy-shell> exit
+Exiting toy shell.
+leedaria@Lees-MacBook-Air lab3_toy_shell % sudo mv toy_shell.py /usr/local/bin/toy_shell
+Password:
+leedaria@Lees-MacBook-Air lab3_toy_shell % sudo chmod +x /usr/local/bin/toy_shell
+leedaria@Lees-MacBook-Air lab3_toy_shell % echo $PATH
+/Library/Frameworks/Python.framework/Versions/3.13/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/leedaria/.npm-global/bin
+leedaria@Lees-MacBook-Air lab3_toy_shell % cd /tmp
+toy_shell
+Toy Shell: List files and folders older than a given date (based on creation time)
+Enter a date in the format YYYY-MM-DD or type 'exit' to quit.
+toy-shell> 2026-11-11
+powerlog (Folder, Created: 2026-09-17 12:23:41)
+com.apple.launchd.AUEG3toBty (Folder, Created: 2026-09-17 12:23:47)
+zeb_def_ipc_834 (File, Created: 2026-09-17 12:28:05)
+toy-shell> exit
+Exiting toy shell.
+leedaria@Lees-MacBook-Air /tmp %
